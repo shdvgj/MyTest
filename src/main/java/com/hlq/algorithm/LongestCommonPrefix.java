@@ -1,10 +1,5 @@
 package com.hlq.algorithm;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-
 /**
  * 
  编写一个函数来查找字符串数组中的最长公共前缀。
