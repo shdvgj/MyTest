@@ -1,7 +1,5 @@
 package com.hlq.algorithm;
 
-import java.util.List;
-
 import com.hlq.algorithm.model.ListNode;
 
 
