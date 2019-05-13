@@ -27,6 +27,7 @@ import java.util.Map;
  *
  */
 public class LengthOfLongestSubstring {
+	// 算法基本思路 ，通过遍历将字符放入map ， 如果跟map中的值重复 ， 从重复的位置开始重新计数
 	public int lengthOfLongestSubstring(String s) {
 		char[] strings = s.toCharArray();
 		int i = 0, max = 0, location = -1;
