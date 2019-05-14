@@ -55,6 +55,12 @@ public class LongestPalindrome {
 		return result;
 	}
 	
+	// TODO 马拉车算法 时间复杂度为O(n)
+	public String manacher(String s) {
+		
+		return "";
+	}
+	
 	public static void main(String[] args) {
 		LongestPalindrome longestPalindrome = new LongestPalindrome();
 		System.out.println(longestPalindrome.longestPalindrome("abb"));
