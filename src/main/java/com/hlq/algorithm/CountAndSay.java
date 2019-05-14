@@ -28,7 +28,7 @@ package com.hlq.algorithm;
 输入: 4
 输出: "1211"
  * @author Ricky
- *
+ * TODO 需要优化
  */
 public class CountAndSay {
 	public String countAndSay(int n) {

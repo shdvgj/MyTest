@@ -18,12 +18,57 @@ package com.hlq.algorithm;
  */
 public class LongestPalindrome {
 	/**
-	 * 
+	 * abccba
+	 * abcdecba
+	 * aba
+	 * abaacdef
+	 * fedcaaba
+	 * 反转算法 ， 即先将字符串反转 ， 然后找出跟原字符串相等的部分 ， 在比较字符串的索引位置 ， 判断是否是回文
 	 * @param s
 	 * @return
 	 */
 	public String longestPalindrome(String s) {
-		return null;
+		StringBuilder bd = new StringBuilder(s);
+		//反转
+		bd.reverse();
+		// 如果反转字符串完全相等 ， 直接返回
+		if(bd.toString().equals(s)) return s;
+		int len = s.length();
+		String result = "";
+		int resultLength = 0;
+		for(int i = 0 ; i < len - resultLength; i++) {
+			// 截取比现有最大长度大的位置
+			for(int j = i + resultLength + 1; j <= len ; j++) {
+				String palindromeStr = s.substring(i, j);
+				// 在反转字符串内查找相同的字符串
+				int index = bd.indexOf(palindromeStr);
+				if (index >= 0 
+					// 判断下标相等即为回文
+					&& len - j == index) {
+					result = palindromeStr;
+					resultLength = result.length();
+				} 
+				// 如果cde找不到的话 ， 那cdef肯定也找不到 ， 所以直接break
+				else if (index < 0) break;
+			}
+		}
+		return result;
+	}
+	
+	public static void main(String[] args) {
+		LongestPalindrome longestPalindrome = new LongestPalindrome();
+		System.out.println(longestPalindrome.longestPalindrome("abb"));
+		System.out.println(longestPalindrome.longestPalindrome("ukxidnpsdfwieixhjnannbmtppviyppjgbsludrzdleei"
+				+ "ydzawnfmiiztsjqqqnthwinsqnrhfjxtklvbozkaeetmblqbxbugxycrlzizthtuwxlmgfjokhqjyukrftvfwikxlp"
+				+ "tydybmmzdhworzlaeztwsjyqnshggxdsjrzazphugckgykzhqkdrleaueuajjdpgagwtueoyybzanrvrgevolwssvq"
+				+ "imgzpkxehnunycmlnetfaflhusauopyizbcpntywntadciopanyjoamoyexaxulzrktneytynmheigspgyhkelxgwp"
+				+ "lizyszcwdixzgxzgxiawstbnpjezxinyowmqsysazgwxpthloegxvezsxcvorzquzdtfcvckjpewowazuaynfpxsxr"
+				+ "ihsfswrmuvluwbdazmcealapulnahgdxxycizeqelesvshkgpavihywwlhdfopmmbwegibxhluantulnccqieyrbjj"
+				+ "qtlgkpfezpxmlwpyohdyftzgbeoioquxpnrwrgzlhtlgyfwxtqcgkzcuuwagmlvgiwrhnredtulxudrmepbunyamss"
+				+ "rfwyvgabbcfzzjayccvvwxzbfgeglqmuogqmhkjebehtwnmxotjwjszvrvpfpafwomlyqsgnysydfdlbbltlwugtap"
+				+ "wgfnsiqxcnmdlrxoodkhaaaiioqglgeyuxqefdxbqbgbltrxcnihfwnzevvtkkvtejtecqyhqwjnnwfrzptzhdnmvs"
+				+ "jnnsnixovnotugpzuymkjplctzqbfkdbeinvtgdpcbvzrmxdqthgorpaimpsaenmnyuyoqjqqrtcwiejutafyqmfau"
+				+ "ufwripmpcoknzyphratopyuadgsfrsrqkfwkdlvuzyepsiolpxkbijqw"));
 	}
 
 }
