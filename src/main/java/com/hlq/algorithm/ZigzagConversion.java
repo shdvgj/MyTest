@@ -46,6 +46,15 @@ public class ZigzagConversion {
 			int num = i % multiNum;
 			// 如果取余之后大于行数 ， 将该行数确定为1-4行中的一行
 			if (num + 1 > numRows) {
+				/**
+				 *比如第五个字符C ， 它所属的列是第三列 ， 先用位置下标4%6 ， 获得余数4，这个数字是队列的下标
+				 *这个超出了上文中设置的队列数量 ， 上文中设置了4个队列 ， 最大的队列下标是3
+				 *其超出最大下标一个位置 ， 根据预设的4个队列 ， 减去该超出的位置数量 ， 就获得了新的队列下标位置
+				L     D     R
+				E   O E   I I
+				E C   I H   N
+				T     S     G
+				 */
 				num = numRows - (num + 1 - numRows) - 1;
 			}
 			if (lists[num] == null) lists[num] = new ArrayList<Character>();
