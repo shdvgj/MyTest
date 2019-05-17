@@ -1,6 +1,7 @@
 package com.hlq.algorithm;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -68,9 +69,52 @@ public class ThreeSum {
 		return result;
 	}
 	
+	// 双指针法
+	public List<List<Integer>> threeSum_V2(int[] nums) {
+		Arrays.sort(nums);
+		List<List<Integer>> result = new ArrayList<List<Integer>>();
+		int threeSum = 0;
+		int length = nums.length;
+		// 记录上一个成功相加的前两个数
+		if (length > 2) {
+			int first = nums[0],second = nums[length - 1];
+			for (int i = 0; i < length - 2; i++) {
+				int l = i + 1 , r = length - 1;
+				if (nums[i] > 0 || nums[r] < 0) break;
+				if (i > 0 && nums[i] == nums[i-1]) continue;
+				while (l < r) {
+					if (nums[i] + nums[l] > 0 || nums[r] < 0) break;
+					threeSum = nums[i] + nums[l] + nums[r];
+					if (nums[i] == first && nums[l] == second && !result.isEmpty()) {
+						l++;
+						continue;
+					}
+					if (threeSum == 0) {
+						List<Integer> threeSumList = new ArrayList<Integer>();
+						threeSumList.add(nums[i]);
+						threeSumList.add(nums[l]);
+						threeSumList.add(nums[r]);
+						result.add(threeSumList);
+						// 如果首数是0 ， 直接返回结果
+						if (nums[i] == 0) return result;
+						first = nums[i];
+						second = nums[l];
+						r--;
+						l++;
+					} else if (threeSum > 0) {
+						r --;
+					} else {
+						l ++;
+					}
+				}
+			}
+		}
+		return result;
+	}
+	
 	public static void main(String[] args) {
 		ThreeSum threeSum = new ThreeSum();
-		List<List<Integer>> result = threeSum.threeSum(new int[] {0,0,0,0,0,1,1,-2,-1});
+		List<List<Integer>> result = threeSum.threeSum_V2(new int[] {-4,-2,1,-5,-4,-4,4,-2,0,4,0,-2,3,1,-5,0});
 		for (List<Integer> list : result) {
 			System.out.println(list.get(0) + "," + list.get(1) + "," + list.get(2));
 		}
