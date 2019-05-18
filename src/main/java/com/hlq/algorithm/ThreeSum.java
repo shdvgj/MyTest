@@ -80,12 +80,21 @@ public class ThreeSum {
 			int first = nums[0],second = nums[length - 1];
 			for (int i = 0; i < length - 2; i++) {
 				int l = i + 1 , r = length - 1;
+				// 如果首数大于0或者尾数小于0 ， 直接结束循环
 				if (nums[i] > 0 || nums[r] < 0) break;
+				// 如果首数和上一个首数相同 ， 跳过（原因：避免重复值）
 				if (i > 0 && nums[i] == nums[i-1]) continue;
+				// 双指针法
 				while (l < r) {
+					// 如果首数和左数相加大于0，或者右数小于0，结束循环
 					if (nums[i] + nums[l] > 0 || nums[r] < 0) break;
 					threeSum = nums[i] + nums[l] + nums[r];
+					// first和second用于避免重复的三个数相加
+					// first和second用于记录上一次加进数组的三个数的头两个数
+					// 头两个就可以确定三个数
+					// 由于数组经过排序，因此如果在子循环内出现重复值，肯定是和上一个相加的两个数相同
 					if (nums[i] == first && nums[l] == second && !result.isEmpty()) {
+						// 左值+1，并跳过这次循环
 						l++;
 						continue;
 					}
