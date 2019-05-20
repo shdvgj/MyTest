@@ -48,11 +48,11 @@ public class DivideTwoIntegers {
 		int leftTime = 0;
 		int result = 0;
 		// 记录最小整数右移一位的结果
-		int maxRight1 = Integer.MIN_VALUE >> 1;
+		int minRight1 = Integer.MIN_VALUE >> 1;
 		if (dividend == 0 || positiveDividend - positiveDivisor > 0) return 0;
 		while (positiveDividend - positiveDivisor < 0) {
-			// 如果除数大于最大整数/2，说明不能再左移了，跳出循环
-			if (positiveDivisor < maxRight1 || positiveDividend - (positiveDivisor << 1) > 0) break;
+			// 如果除数大于最小整数右移一位，说明不能再左移了，跳出循环
+			if (positiveDivisor < minRight1 || positiveDividend - (positiveDivisor << 1) > 0) break;
 			positiveDivisor = positiveDivisor << 1;
 			leftTime ++;
 		}
