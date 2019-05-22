@@ -50,7 +50,7 @@ import java.util.regex.Pattern;
 输出: -2147483648
 解释: 数字 "-91283472332" 超过 32 位有符号整数范围。 
      因此返回 INT_MIN (−2^31) 。
- * @author 49781
+ * @author Ricky
  *
  */
 public class StringToIntegerAtoi {

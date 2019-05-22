@@ -13,7 +13,7 @@ package com.hlq.algorithm;
 3,2,1 → 1,2,3
 1,1,5 → 1,5,1
  * @author Ricky
- * TODO
+ * TODO 2,3,1测试用例无法通过
  */
 public class NextPermutation {
 	public void nextPermutation(int[] nums) {
@@ -50,7 +50,7 @@ public class NextPermutation {
 	
 	public static void main(String[] args) {
 		NextPermutation nextPermutation = new NextPermutation();
-		int[] nums = new int[] {3,2,3};
+		int[] nums = new int[] {1,3,2};
 		nextPermutation.nextPermutation(nums);
 		for (int i : nums) {
 			System.out.println(i);
