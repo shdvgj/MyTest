@@ -1,6 +1,7 @@
 package com.hlq.algorithm;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -23,11 +24,41 @@ import java.util.List;
  *
  */
 public class Permutations {
+	// 使用回溯算法
 	public List<List<Integer>> permute(int[] nums) {
-		int length = nums.length;
-		List<List<Integer>> result 
-			= new ArrayList<List<Integer>>(length*(length-1));
+		List<List<Integer>> output = new ArrayList<>();
+		List<Integer> nums_list = new ArrayList<>();
+		for (Integer integer : nums) 
+			nums_list.add(integer);
 		
-		return null;
+		int n = nums.length;
+		backTrack(n, nums_list, output, 0);
+		return output;
+	}
+	
+	public void backTrack(int n, 
+			List<Integer> nums_list, 
+			List<List<Integer>> output,
+			int first) {
+		if (first == n) 
+			output.add(new ArrayList<Integer>(nums_list));
+		
+		for (int i = first; i < n; i++) {
+			Collections.swap(nums_list, first, i);
+			backTrack(n, nums_list, output, first + 1);
+			Collections.swap(nums_list, first, i);
+		}
+	}
+	
+	public static void main(String[] args) {
+		Permutations permutations = new Permutations();
+		List<List<Integer>> result = permutations.permute(new int[] {1,2,3});
+		for (List<Integer> list : result) {
+			for (Integer integer : list) {
+				System.out.print(integer + ",");
+			}
+			System.out.println("");
+		}
 	}
 }
+
