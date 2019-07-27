@@ -53,7 +53,7 @@ public class SortSumarry {
 	}
 	
 	public static void quickSort_2(int a[] , int left , int right) {
-		if (left > right) return;
+		/*if (left > right) return;
 		int temp = a[left];
 		int i = left;
 		int j = right;
@@ -69,7 +69,24 @@ public class SortSumarry {
 		a[left] = a[i];
 		a[i] = temp;
 		quickSort_2(a, left, i-1);
-		quickSort_2(a, i+1, right);
+		quickSort_2(a, i+1, right);*/
+		if(left > right) return;
+		int temp = a[left];
+		int i = left;
+		int j = right;
+		while (i != j) {
+			while(a[j] >= temp && i < j) j--;
+			while(a[i] <= temp && i < j) i++;
+			if (i < j) {
+				int t = a[i];
+				a[j] = a[i];
+				a[i] = t;
+			}
+		}
+		a[left] = a[i];
+		a[i] = temp;
+		quickSort_2(a, left, i+1);
+		quickSort_2(a, i-1, right);
 	}
 	
 	// 快速排序
