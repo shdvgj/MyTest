@@ -172,9 +172,11 @@ public class SortSumarry {
 		int[] nums = new int[] {7,4,9,3,6,2};
 		//bubbleSort(nums);
 		//selectionSort(nums);
-		quickSort_2(nums, 0, nums.length-1);
-		for (int i = 0; i < nums.length; i++) {
+//		quickSort_2(nums, 0, nums.length-1);
+		/*for (int i = 0; i < nums.length; i++) {
 			System.out.println(nums[i]);
-		}
+		}*/
+		System.out.println(Math.abs(-2147483648));
+
 	}
 }

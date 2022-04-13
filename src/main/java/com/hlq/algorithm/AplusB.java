@@ -95,6 +95,6 @@ public class AplusB {
 
     public static void main(String[] args) {
         AplusB aplusB = new AplusB();
-        System.out.println(aplusB.aplusb(9999,-1));
+        System.out.println(aplusB.aplusb(52,1));
     }
 }
